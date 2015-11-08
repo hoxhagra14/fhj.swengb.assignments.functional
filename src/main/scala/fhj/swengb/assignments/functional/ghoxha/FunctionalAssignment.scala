@@ -1,4 +1,4 @@
-package fhj.swengb.assignments.functional.rladstaetter
+package fhj.swengb.assignments.functional.ghoxha
 
 /**
   * This is the first assignment for swengb 2015.
@@ -19,12 +19,13 @@ case class FunctionalAssignment(lowerBound: Int = 1,
     * xs(i) + 1 == xs(i + 1) (for i > 0 and i <= 1000)
     *
     */
-  val xs: Seq[Int] = ???
+
+  val xs: Seq[Int] = Seq.range(lowerBound,upperBound +1)
 
   /**
     * provide the sum of all elements defined in xs
     */
-  val sumXs = ???
+  val sumXs = xs.sum
 
   /**
     * This sequence contains a list with the following elements:
@@ -39,23 +40,24 @@ case class FunctionalAssignment(lowerBound: Int = 1,
     * x(999) = lowerbound
     *
     */
-  val ys: Seq[Int] = ???
+  val ys: Seq[Int] = xs.map(x=> x*factor).reverse
 
   /**
     * this sequence contains pairs of xs and ys. the ys should
     * be in reversed order.
     */
-  val zs: Seq[(Int, Int)] = ???
+  val zs: Seq[(Int, Int)] = xs.zip(ys.reverse)
 
   /**
     * Function should divide the second operand with the first.
     */
-  def f(ab: (Int, Int)): Int = ???
+  def f(ab: (Int, Int)): Int = ab._2/ab._1
+
 
   /**
     * apply function f defined above to all elements of zs, return the sequence
     */
-  val result: Seq[Int] = ???
+  val result: Seq[Int] = zs.map(x => f(x))
 
 }
 
